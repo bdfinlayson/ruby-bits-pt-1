@@ -1,3 +1,4 @@
+search = "Super Mario Bros."
 games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
 
 #Full Unless Statement
@@ -6,5 +7,18 @@ games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
 #end
 
 #Single Line Unless Statement
-puts "Games in your vast collection: #{games.count}" unless games.empty?
+#puts "Games in your vast collection: #{games.count}" unless games.empty?
 
+#Implied Nil
+#search_index = games.find_index(search)
+#if search_index
+#  puts "Game #{search} Found: #{games[search_index]} at index #{search_index}."
+#else
+#  puts "Game #{search} not found."
+#end
+
+games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+matched_games = games.grep(Regexp.new(search))
+
+# Found an exact match
+puts "Game #{search} found." if matched_games.length > 0 && matched_games.include?(search)

@@ -12,3 +12,15 @@ run some code here
 You can also make single line unless statements with this structure
 
 run some code here `unless` your condition here
+
+About Nil
+-----------
+`if/else` statements by default interpret nil as false
+
+Short-Circuit &&
+-----------------
+Uses the `&&` condition to short-circuit a controll expression with two or more conditional arguments. Eg:
+`puts "Luke, I am your father" if son_arr.length > 0 && son_arr.include?("Luke")`
+
+
+
