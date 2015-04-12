@@ -77,3 +77,26 @@ In a method, the conditional return might be written this way:
     do this other thing
   `end`
 `end`
+
+
+Short Circuit Evaluation
+------------------------
+Use short circuit evaluation to clean up your code. For example, this:
+
+def search_index(games, search_term)
+  search_index = games.find_index(search_term)
+
+`def search_index(games, search_term)`
+  `search_index = games.find_index(search_term)`
+  `if search_index`
+    `search_index`
+  `else`
+    `"Not Found"`
+  `end`
+`end`
+
+can be shortened to this:
+
+`def search_index(games, search_term)`
+  `search_index = games.find_index(search_term) || "Not Found"`
+`end` 
