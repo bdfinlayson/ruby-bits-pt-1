@@ -339,6 +339,7 @@ Instance Method
     end
 
 Private Method
+-------------------
 Information inside class instances can be passed from public to private methods. The example below shows how when `add_game` is called, it passes a message to the `log` method, which then calls the `put` method with the message:
 
     class Game
