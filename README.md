@@ -217,9 +217,53 @@ To this:
     end
     describe_favorites('Mario', 'Contra', 'Metroid') #notice how there is no explicit array here?
 
+Initializing Classes
+-------------------
+Classes can be initialized with multiple arguments, even optional ones, for example:
+
+    class Game
+      def initialize(name, options={})
+        @name = name
+        @year = options[:year]
+        @system = options[:system]
+      end
+    end
 
 
+attr_accessor and attr_reader
+----------------------------
+attr_accessor allows you to `get` data from a class instance without having to define `set` and `get` methods. The `attr_accessor` does that for you automatically. For example, this:
 
+    class Game
+      def initialize(name)
+        @name = name
+      end
+      def name
+       @name = name
+      end
+    end
 
+Is shortened to this:
+
+    class Game
+      attr_accessor :name
+      def initialize(name)
+        @name = name
+      end
+    end
+
+The `attr_reader` is similar to `attr_accessor` in that it ensures you can access class instance data later, but `attr_reader` prevents you from setting the class instance data from outside the object by creating only a `get` and not a `set` method:
+
+    class Game
+      attr_accessor :name, :year, :system
+      attr_reader :created_at
+
+      def initialize(name, options={})
+        @name = name
+        @year = options[:year]
+        @system = options[:system]
+        @created_at = Time.now #notice how created_at can only be set when the class is instantiated?
+      end
+    end
 
 
