@@ -378,3 +378,16 @@ Information inside class instances can be passed from public to private methods.
       end
     end
 
+Inheritance
+--------------
+We can override methods in subclasses inherited from a parent class. In this example, the initialize method for `ArcadeGame` is overriden in part when we first call `super` then add a `weight` parameter, as shown below:
+
+    class ArcadeGame < Game
+      attr_accessor :weight
+      def initialize(name, options = {})
+        super
+        self.weight = options[:weight]
+      end
+    end
+
+
