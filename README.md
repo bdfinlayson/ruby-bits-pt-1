@@ -54,10 +54,15 @@ Conditional Return
 Conditional return is a pretty awesome way to avoid setting the same variable in multiple times in a block of code inside a conditional expression. For example, the following bit of code can be cleaned up as such:
 #### Old
 `if y.empty?`
+
 `  x = "Y is empty"`
+
 `else`
+
 `  x = "Y is not empty"`
+
 `end`
+
 `puts x`
 
 ### New (with conditional return included)
