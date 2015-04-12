@@ -3,50 +3,50 @@ My notes and solutions to exercises from Code School's Ruby Bits Part 1 course @
 
 Control Expressions
 -------------------
-`unless` statements have the following structure
+unless statements have the following structure
 
     unless your condition here
 
     run some code here
 
-    `end`
+    end
 
 You can also make single line unless statements with this structure
 
-run some code here `unless` your condition here
+run some code here unless your condition here
 
 About Nil
 -----------
-`if/else` statements by default interpret nil as false
+if/else statements by default interpret nil as false
 
 Short-Circuit &&
 -----------------
-Uses the `&&` condition to short-circuit a controll expression with two or more conditional arguments. Eg:
-    `puts "Luke, I am your father" if son_arr.length > 0 && son_arr.include?("Luke")`
+Uses the && condition to short-circuit a controll expression with two or more conditional arguments. Eg:
+    puts "Luke, I am your father" if son_arr.length > 0 && son_arr.include?("Luke")
 
 Conditional Assignment Operator ||=
 ----------------------
 The conditional assignment operator gives a variable a value *if* it does not *yet* have a value, otherwise it will do nothing. Eg:
 
-    `x ||= 1 #=> 1`
+    x ||= 1 #=> 1
 
-    `x ||= 99 #=> 1`
+    x ||= 99 #=> 1
 
 However, this rule does not hold true with booleans:
 
-    `y ||= false     #=> false`
+    y ||= false     #=> false
 
-    `y ||= true      #=> true`
+    y ||= true      #=> true
 
 What ||= really is. It's just a shorthand for a longer expression. It works like the+=, *= and -= operators:
 
-    `a  += b`         same as        `a = a + b`
+    a  += b         same as        a = a + b
 
-    `a  -= b`         same as        `a = a - b`
+    a  -= b         same as        a = a - b
 
-    `a  *= b`         same as        `a = a * b`
+    a  *= b         same as        a = a * b
 
-    `a ||= b`         same as        `a = a || b`
+    a ||= b         same as        a = a || b
 
 But the || isn't an arithmetic operator, it works a bit differently:
 
@@ -67,47 +67,47 @@ Conditional Return
 ------------------
 Conditional return is a pretty awesome way to avoid setting the same variable in multiple times in a block of code inside a conditional expression. For example, the following bit of code can be cleaned up as such:
 #### Old
-    `if y.empty?`
+    if y.empty?
 
-      `  x = "Y is empty"`
+        x = "Y is empty"
 
-    `else`
+    else
 
-  `      x = "Y is not empty"`
+        x = "Y is not empty"
 
-    `end    `
+    end
 
-    `puts x`
+    puts x
 
 ### New (with conditional return included)
-    `puts x == if y.empty?`
+    puts x == if y.empty?
 
 
-      `  "Y is empty"`
+        "Y is empty"
 
-    `else`
+    else
 
-      `  "Y is not empty"`
+        "Y is not empty"
 
-    `end`
+    end
 
 In a method, the conditional return might be written this way:
 
-    `def myMethod`
+    def myMethod
 
       some code here
 
-      `if something`
+      if something
 
         do this
 
-      `else`
+      else
 
         do this other thing
 
-      `end`
+      end
 
-    `end`
+    end
 
 
 Short Circuit Evaluation
@@ -115,29 +115,29 @@ Short Circuit Evaluation
 Use short circuit evaluation to clean up your code. For example, this:
 
     def search_index(games, search_term)
-    
+
      search_index = games.find_index(search_term)
-    
-    def search_index(games, search_term)`
-    
-     `search_index = games.find_index(search_term)`
-    
-     `if search_index`
-    
-       `search_index`
-    
-     `else`
-    
-       `"Not Found"`
-    
-     `end`
-    
-    `end`
+
+    def search_index(games, search_term)
+
+     search_index = games.find_index(search_term)
+
+     if search_index
+
+       search_index
+
+     else
+
+       "Not Found"
+
+     end
+
+    end
 
 can be shortened to this:
 
-    `def search_index(games, search_term)`
+    def search_index(games, search_term)
 
-      `search_index = games.find_index(search_term) || "Not Found"`
+      search_index = games.find_index(search_term) || "Not Found"
 
-    `end` 
+    end
