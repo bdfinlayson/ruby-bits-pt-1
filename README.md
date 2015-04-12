@@ -67,4 +67,13 @@ Conditional return is a pretty awesome way to avoid setting the same variable in
 `  "Y is not empty"`
 `end`
 
+In a method, the conditional return might be written this way:
 
+`def myMethod`
+  some code here
+  `if something`
+    do this
+  `else`
+    do this other thing
+  `end`
+`end`
