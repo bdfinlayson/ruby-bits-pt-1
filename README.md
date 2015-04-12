@@ -50,15 +50,15 @@ What ||= really is. It's just a shorthand for a longer expression. It works like
 
 But the || isn't an arithmetic operator, it works a bit differently:
 
-a equals:                  (a||b) equals:
+    a equals:                  (a||b) equals:
 
-–––––––––––––––––––––––––––––––––––––––––
+    –––––––––––––––––––––––––––––––––––––––––
 
-false                          b
+    false                          b
 
-nil                            b
+    nil                            b
 
-(anything else)             a
+    (anything else)                a
 
 
 So if the left-hand variable a is nil, or false, or not even defined, then after a ||= x it will have the value of x. Otherwise, it'll remain unchanged.
