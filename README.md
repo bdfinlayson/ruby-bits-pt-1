@@ -266,4 +266,115 @@ The `attr_reader` is similar to `attr_accessor` in that it ensures you can acces
       end
     end
 
+Encapsulation
+-------------
+Encapsulation is the packing data and functions into a single component. Encapsulation means that the internal representation of an object is hidden from the outside. Only the object can interact with its internal data. Encapsulation means isolating the variables and exposing a safe method of acessing and modifying them. For example, rather than accessing the name of the game class instance, as done here:
+
+
+    class Library
+      attr_accessor :games
+
+      def initialize(games)
+        self.games = games
+      end
+
+      def has_game?(search_name)
+        for game in games
+          return true if game.name == search_name
+        end
+        false
+      end
+    end
+
+You can compare the entire object without exposing its parts, as shown here:
+
+    class Library
+      attr_accessor :games
+
+      def initialize(games)
+        self.games = games
+      end
+
+      def has_game?(search_name)
+        for game in games
+          return true if game. == game #the entire game object is compared
+        end
+        false
+      end
+    end
+
+Instance Method
+----------------
+(from CodeSchool): We can initialize our Library with an array of games, but the only way to add games from outside the class is to use the games accessor method and alter the array. This is breaking encapsulation. The method in  Library called add_game takes in a game and adds it to the games array, thus preventing us from breaking encapsulation.
+
+    class Game
+      attr_accessor :name, :year, :system
+      attr_reader :created_at
+
+      def initialize(name, options={})
+        self.name = name
+        self.year = options[:year]
+        self.system = options[:system]
+        @created_at = Time.now
+      end
+    end
+
+    class Library
+      attr_accessor :games
+
+      def initialize(games)
+        self.games = games
+      end
+
+      def add_game(game) #added to prevent breaking encapsulation
+        self.games << game
+      end
+
+      def has_game?(search_game)
+        for game in games
+          return true if game == search_game
+        end
+        false
+      end
+    end
+
+Private Method
+Information inside class instances can be passed from public to private methods. The example below shows how when `add_game` is called, it passes a message to the `log` method, which then calls the `put` method with the message:
+
+    class Game
+      attr_accessor :name, :year, :system
+      attr_reader :created_at
+
+      def initialize(name, options={})
+        self.name = name
+        self.year = options[:year]
+        self.system = options[:system]
+        @created_at = Time.now
+      end
+    end
+
+    class Library
+      attr_accessor :games
+
+      def initialize(games)
+        self.games = games
+      end
+
+      def has_game?(search_game)
+        for game in games
+          return true if game == search_game
+        end
+        false
+      end
+
+      def add_game(game)
+        games << game
+        info("Added game info #{game}") #notice how a message is being passed to the info method below?
+      end
+
+      private
+      def log(info)
+        puts info
+      end
+    end
 
