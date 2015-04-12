@@ -22,11 +22,22 @@
 #puts "Game #{search} found." if matched_games.length > 0 && matched_games.include?(search)
 
 #Conditional Assignment
-search ||= ""
-games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+#search ||= ""
+#games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
 
-matched_games = games.grep(Regexp.new(search))
-puts "Found the following games..."
-matched_games.each do |game|
-  puts "- #{game}"
+#matched_games = games.grep(Regexp.new(search))
+#puts "Found the following games..."
+#matched_games.each do |game|
+#  puts "- #{game}"
+#end
+
+
+#Conditional Return
+search = "Contra"
+games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+search_index = games.find_index(search)
+puts search_result = if search_index
+  "Game #{search} found: #{games[search_index]} at index #{search_index}."
+else
+  "Game #{search} not found."
 end
