@@ -1,6 +1,3 @@
-search = "Super Mario Bros."
-games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
-
 #Full Unless Statement
 #unless games.empty?
 #  puts "Games in your vast collection: #{games.count}"
@@ -17,8 +14,19 @@ games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
 #  puts "Game #{search} not found."
 #end
 
-games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
-matched_games = games.grep(Regexp.new(search))
+#games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+#matched_games = games.grep(Regexp.new(search))
 
+#Short Circuit And
 # Found an exact match
-puts "Game #{search} found." if matched_games.length > 0 && matched_games.include?(search)
+#puts "Game #{search} found." if matched_games.length > 0 && matched_games.include?(search)
+
+#Conditional Assignment
+search ||= ""
+games = ["Super Mario Bros.", "Contra", "Metroid", "Mega Man 2"]
+
+matched_games = games.grep(Regexp.new(search))
+puts "Found the following games..."
+matched_games.each do |game|
+  puts "- #{game}"
+end
