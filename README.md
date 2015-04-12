@@ -141,3 +141,85 @@ can be shortened to this:
       search_index = games.find_index(search_term) || "Not Found"
 
     end
+
+
+Optional Arguments
+------------------
+Arguments can be made optional (you don't have to pass them in if you don't want to) by setting them with default values. For example, change the `year` and `system` below from this:
+
+    def new_game(name, year, system)
+      {
+        name: name,
+        year: year,
+        system: system
+      }
+    end
+    game = new_game("Street Figher II", nil, nil)
+
+To this:
+
+    def new_game(name, year=nil, system=nil)
+      {
+        name: name,
+        year: year,
+        system: system
+      }
+    end
+    game = new_game("Street Figher II")
+
+Setting the optional arguments to `nil` is not the best way to do this, so try using a Hash instead:
+
+    def new_game(name, options={})
+      {
+        name: name,
+        year: options[:year],
+        system: options[:system]
+      }
+    end
+    game = new_game("Street Figher II", year: 1992, system: "Playstation")
+
+Note the array syntax in the code block that is used to access the `option` keys. Because you're using the Hash, the optional arguments can be passed in in any order (order does not matter).
+
+Raise Exception
+----------------
+You can raise exceptions in your methods if certain conditions are not met. For example, if a name is `nil`, you may raise an exception. You can even create a custom exception. First, create a custom exception, like so:
+
+    class InvalidGameError < StandardError; end
+
+Then add a `raise` exception to your method:
+
+    def new_game(name, options={})
+      raise InvalidGameError if name.nil?
+    {
+      name: name,
+      year: options[:year],
+      system: options[:system]
+    }
+    end
+
+Splat Arguments
+----------------
+Splat arguments are identified by the `*` symbol. They tell ruby to expect an array of items. Using a splat argument can make your code a bit more consise. One of the more noticeable aspects of the splat argument is that you don't actually have to pass an array in as an argument: ruby is smart enough to convert the items into an array once they're passed in. The splat argument changes this code from this:
+
+    def describe_favorites(games)
+      for game in games
+        puts "Favorite Game: #{game}"
+      end
+    end
+    describe_favorites(['Mario', 'Contra', 'Metroid']) #notice how there is an array here?
+
+To this:
+
+    def describe_favorites(*games)
+      for game in games
+        puts "Favorite Game: #{game}"
+      end
+    end
+    describe_favorites('Mario', 'Contra', 'Metroid') #notice how there is no explicit array here?
+
+
+
+
+
+
+
